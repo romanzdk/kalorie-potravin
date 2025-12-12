@@ -2,6 +2,19 @@ import { Food } from "@/data/foods";
 import { SatietyBadge } from "./SatietyBadge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Flame, Info } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+function getKcalColor(kcal: number): string {
+  if (kcal <= 100) return "bg-satiety-high/15 text-satiety-high";
+  if (kcal <= 300) return "bg-satiety-medium/15 text-satiety-medium";
+  return "bg-satiety-low/15 text-satiety-low";
+}
+
+function getFlameColor(kcal: number): string {
+  if (kcal <= 100) return "text-satiety-high";
+  if (kcal <= 300) return "text-satiety-medium";
+  return "text-satiety-low";
+}
 
 interface FoodCardProps {
   food: Food;
@@ -23,10 +36,10 @@ export function FoodCard({ food, index }: FoodCardProps) {
         </div>
         
         <div className="flex items-center gap-2 mb-3">
-          <div className="flex items-center gap-1.5 bg-secondary rounded-lg px-3 py-1.5">
-            <Flame className="h-4 w-4 text-orange-500" />
-            <span className="font-bold text-foreground">{food.kcal}</span>
-            <span className="text-sm text-muted-foreground">kcal / 100g</span>
+          <div className={cn("flex items-center gap-1.5 rounded-lg px-3 py-1.5", getKcalColor(food.kcal))}>
+            <Flame className={cn("h-4 w-4", getFlameColor(food.kcal))} />
+            <span className="font-bold">{food.kcal}</span>
+            <span className="text-sm opacity-80">kcal / 100g</span>
           </div>
         </div>
 
