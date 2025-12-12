@@ -32,7 +32,10 @@ export function FoodCard({ food, index }: FoodCardProps) {
           <h3 className="font-semibold text-lg text-foreground leading-tight">
             {food.potravina}
           </h3>
-          <SatietyBadge level={food.sytost} />
+          <div className="flex flex-col items-end gap-0.5">
+            <SatietyBadge level={food.sytost} />
+            <span className="text-[10px] text-muted-foreground/60">sytost</span>
+          </div>
         </div>
         
         <div className="flex items-center gap-2 mb-3">
