@@ -3,7 +3,13 @@ import { foods, categories } from "@/data/foods";
 import { searchMatch } from "@/lib/search";
 import { SearchHeader } from "@/components/SearchHeader";
 import { CategorySection } from "@/components/CategorySection";
-import { Utensils, Search } from "lucide-react";
+import { Utensils, Search, Flame, ChevronDown, Mail, Database } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -75,7 +81,7 @@ const Index = () => {
           </div>
         )}
 
-        {/* Legend */}
+        {/* Legend - Sytost */}
         <div className="mt-8 p-4 bg-card rounded-xl border border-border/50">
           <h3 className="font-semibold text-foreground mb-3">Legenda sytosti</h3>
           <div className="grid grid-cols-2 gap-2 text-sm">
@@ -98,8 +104,64 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Legend - Kalorie */}
+        <div className="mt-4 p-4 bg-card rounded-xl border border-border/50">
+          <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+            <Flame className="h-4 w-4 text-muted-foreground" />
+            Legenda kalorií
+          </h3>
+          <div className="grid grid-cols-3 gap-2 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-satiety-high"></span>
+              <span className="text-muted-foreground">0–100</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-satiety-medium"></span>
+              <span className="text-muted-foreground">101–300</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-satiety-low"></span>
+              <span className="text-muted-foreground">300+</span>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Footer */}
+        <div className="mt-8">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="faq" className="border-border/50">
+              <AccordionTrigger className="text-sm text-muted-foreground hover:text-foreground py-3">
+                Často kladené otázky
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-4 text-sm">
+                  <div className="flex items-start gap-3">
+                    <Database className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-medium text-foreground">Zdroj dat</p>
+                      <p className="text-muted-foreground">Gemini 3, 12/2025</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Mail className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-medium text-foreground">Kontakt na vývojáře</p>
+                      <a 
+                        href="mailto:romanzdk@gmail.com" 
+                        className="text-primary hover:underline"
+                      >
+                        romanzdk@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
         {/* Footer */}
-        <footer className="mt-8 pb-8 text-center text-xs text-muted-foreground">
+        <footer className="mt-4 pb-8 text-center text-xs text-muted-foreground">
           <p>Hodnoty jsou orientační na 100g/ml potraviny</p>
         </footer>
       </main>
