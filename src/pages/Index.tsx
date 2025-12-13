@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import { foods, categories } from "@/data/foods";
+import { foods, categories, categoryEmojis } from "@/data/foods";
 import { searchMatch } from "@/lib/search";
 import { SearchHeader } from "@/components/SearchHeader";
 import { CategorySection } from "@/components/CategorySection";
-import { Utensils, Search, Flame, ChevronDown, Mail, Database } from "lucide-react";
+import { Utensils, Search, Flame, Mail, Database, Heart } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -33,6 +33,16 @@ const Index = () => {
 
   const hasResults = filteredFoods.length > 0;
 
+  const scrollToCategory = (category: string) => {
+    const element = document.getElementById(`category-${category}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Filter categories that have results
+  const visibleCategories = categories.filter(cat => groupedFoods[cat]?.length > 0);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -57,6 +67,26 @@ const Index = () => {
         resultCount={filteredFoods.length}
       />
 
+      {/* Category Navigation */}
+      {hasResults && (
+        <div className="sticky top-[72px] z-20 bg-background/95 backdrop-blur-sm border-b border-border/50">
+          <div className="max-w-lg mx-auto px-4 py-2">
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              {visibleCategories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => scrollToCategory(category)}
+                  className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-muted/50 hover:bg-muted rounded-full whitespace-nowrap transition-colors"
+                >
+                  <span>{categoryEmojis[category]}</span>
+                  <span className="text-muted-foreground">{category}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Food List */}
       <main className="max-w-lg mx-auto px-4 py-6">
         {hasResults ? (
@@ -65,6 +95,7 @@ const Index = () => {
               key={category}
               category={category}
               foods={groupedFoods[category]}
+              id={`category-${category}`}
             />
           ))
         ) : (
@@ -135,6 +166,13 @@ const Index = () => {
               </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 text-sm">
+                  <div className="flex items-start gap-3">
+                    <Heart className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-medium text-foreground">Proč jsem appku vytvořil</p>
+                      <p className="text-muted-foreground">Pro rodiče, aby pro ně bylo jednodušší jíst zdravěji</p>
+                    </div>
+                  </div>
                   <div className="flex items-start gap-3">
                     <Database className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                     <div>
