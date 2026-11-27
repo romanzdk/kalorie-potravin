@@ -1,74 +1,50 @@
-# Welcome to your Lovable project
+# Sytost na Dosah
 
-## Project info
+Vytvoř moderní, "mobile-first" webovou aplikaci, která slouží jako "Průvodce energetickou hodnotou a sytostí potravin". Design musí být čistý, minimalistický a 100% responzivní, s hlavním důrazem na perfektní čitelnost na mobilním telefonu.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+### Hlavní požadavky na UI:
+1. **Jazyk:** Celé rozhraní aplikace (tlačítka, nadpisy, placeholder texty) musí být v **češtině**.
+2. **Rozložení:** Použij rozložení typu "Karty" (Card layout) pro seznam potravin. Nepoužívej široké tabulky, které se na mobilu špatně čtou.
+3. **Vizuální styl:** Hodně bílého místa (whitespace), velké čitelné písmo.
+4. **Barevné kódování:** Použij barvy pro indikaci "Úrovně sytosti" (např. Zelená pro "Vysoká/Velmi vysoká", Žlutá pro "Střední", Červená/Oranžová pro "Nízká").
 
-## How can I edit this code?
+### Funkcionalita:
+1. **Vyhledávání (Sticky Header):**
+   - Umísti velké vyhledávací pole fixně na horní část obrazovky (sticky), aby bylo vždy po ruce.
+   - **KRITICKY DŮLEŽITÉ:** Vyhledávání musí být **necitlivé na diakritiku (háčky/čárky) a velikost písmen**.
+   - Logika: Když uživatel napíše "rajce", musí to najít "Rajče". Když napíše "kure", najde to "Kuřecí".
 
-There are several ways of editing your application.
+2. **Seznam potravin:**
+   - Seskup potraviny podle jejich kategorie (např. Zelenina, Ovoce, Maso...).
+   - Každá karta potraviny musí obsahovat:
+     - **Název:** Tučně a velkým písmem.
+     - **Kcal:** Výrazně zobrazeno (např. "52 kcal / 100g").
+     - **Štítek sytosti:** Barevný odznak s textem (např. "Vysoká").
+     - **Důvod sytosti:** Menším písmem pod tím (např. "Vláknina + Objem").
 
-**Use Lovable**
+Data jsou přiložena v souboru `data.csv`.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Ujisti se, že aplikace vypadá profesionálně, kód je bez chyb a vše funguje plynule.
 
-Changes made via Lovable will be committed automatically to this repo.
+This project was built with [Lovable](https://lovable.dev).
 
-**Use your preferred IDE**
+**Live app**: https://kalorie-potravin.lovable.app
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Build with Lovable
 
-The only requirement is having Bun installed - [install Bun](https://bun.sh/docs/installation)
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/93a85364-9cc6-45f0-bd73-9ec3c6b72981).
 
-Follow these steps:
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-bun install
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-bun run dev
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Bun 1.3.4
-- Vite 7.2.7
-- TypeScript
-- React 19.2.1
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
