@@ -6,24 +6,23 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { useState } from "react";
 
 interface CategorySectionProps {
   category: string;
   foods: Food[];
   id?: string;
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export function CategorySection({ category, foods, id }: CategorySectionProps) {
-  const [isOpen, setIsOpen] = useState(true);
-
+export function CategorySection({ category, foods, id, isOpen, onOpenChange }: CategorySectionProps) {
   if (foods.length === 0) return null;
 
   const emoji = categoryEmojis[category] || "📦";
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mb-8" id={id}>
-      <div className="sticky top-[72px] z-10 bg-background/95 backdrop-blur-sm py-3 -mx-4 px-4 mb-4 border-b border-border/50">
+    <Collapsible open={isOpen} onOpenChange={onOpenChange} className="mb-8 scroll-mt-[var(--sticky-h,0px)]" id={id}>
+      <div className="sticky top-[var(--sticky-h,0px)] z-10 bg-background/95 backdrop-blur-sm py-3 -mx-4 px-4 mb-4 border-b border-border/50">
         <CollapsibleTrigger className="w-full flex items-center justify-between hover:opacity-80 transition-opacity">
           <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
             <span className="text-2xl">{emoji}</span>
