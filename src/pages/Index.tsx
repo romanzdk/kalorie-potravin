@@ -230,8 +230,18 @@ const Index = () => {
         </div>
 
         {/* Footer */}
-        <footer className="mt-4 pb-8 text-center text-xs text-muted-foreground">
-          <p>Hodnoty jsou orientační na 100g/ml potraviny</p>
+        <footer className="mt-4 pb-8 space-y-2 text-center text-xs text-muted-foreground">
+          <p>
+            Hodnoty na 100 g/ml jsou orientační. Data vygenerovala AI (Gemini 3, 12/2025)
+            a nebyla ověřena v oficiální databázi potravin. Nenahrazují radu lékaře ani dietologa.
+          </p>
+          <p>
+            Web provozuje Roman Zydyk,{" "}
+            <a href="mailto:romanzdk@gmail.com" className="text-primary underline">romanzdk@gmail.com</a>.
+            {" "}Jen kvůli měření návštěvnosti používáme službu{" "}
+            <a href="https://www.goatcounter.com/help/privacy" className="text-primary underline">GoatCounter</a>
+            {" "}jako zpracovatele, bez cookies.
+          </p>
         </footer>
       </main>
     </div>
