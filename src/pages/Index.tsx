@@ -92,8 +92,8 @@ const Index = () => {
       {/* Category Navigation */}
       {hasResults && (
         <div className="bg-background/95 backdrop-blur-sm border-b border-border/50">
-          <div className="max-w-lg mx-auto px-4 py-2">
-            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+          <div className="max-w-lg md:max-w-3xl lg:max-w-6xl mx-auto px-4 py-2">
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:flex-wrap md:justify-center md:overflow-visible">
               {visibleCategories.map((category) => (
                 <button
                   key={category}
@@ -111,7 +111,7 @@ const Index = () => {
       </div>
 
       {/* Food List */}
-      <main className="max-w-lg mx-auto px-4 py-6">
+      <main className="max-w-lg md:max-w-3xl lg:max-w-6xl mx-auto px-4 py-6">
         {hasResults ? (
           categories.map((category) => (
             <CategorySection
@@ -137,8 +137,9 @@ const Index = () => {
           </div>
         )}
 
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
         {/* Legend - Sytost */}
-        <div className="mt-8 p-4 bg-card rounded-xl border border-border/50">
+        <div className="p-4 bg-card rounded-xl border border-border/50">
           <h3 className="font-semibold text-foreground mb-3">Legenda sytosti</h3>
           <div className="grid grid-cols-2 gap-2 text-sm">
             <div className="flex items-center gap-2">
@@ -165,7 +166,7 @@ const Index = () => {
         </div>
 
         {/* Legend - Kalorie */}
-        <div className="mt-4 p-4 bg-card rounded-xl border border-border/50">
+        <div className="p-4 bg-card rounded-xl border border-border/50">
           <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
             <Flame className="h-4 w-4 text-muted-foreground" />
             Legenda kalorií
@@ -184,6 +185,7 @@ const Index = () => {
               <span className="text-muted-foreground">300+</span>
             </div>
           </div>
+        </div>
         </div>
 
         {/* FAQ Footer */}

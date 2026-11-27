@@ -38,7 +38,7 @@ export function CategorySection({ category, foods, id, isOpen, onOpenChange }: C
       </div>
       
       <CollapsibleContent>
-        <div className="grid gap-3">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {foods.map((food, index) => (
             <FoodCard key={food.potravina} food={food} index={index} />
           ))}
