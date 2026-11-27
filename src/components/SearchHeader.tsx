@@ -10,7 +10,7 @@ interface SearchHeaderProps {
 
 export function SearchHeader({ searchQuery, onSearchChange, resultCount }: SearchHeaderProps) {
   return (
-    <header className="sticky top-0 z-20 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
+    <header className="bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
       <div className="max-w-lg mx-auto px-4 py-3">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />

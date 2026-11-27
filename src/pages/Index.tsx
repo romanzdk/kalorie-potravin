@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { foods, categories, categoryEmojis } from "@/data/foods";
 import { searchMatch } from "@/lib/search";
 import { SearchHeader } from "@/components/SearchHeader";
@@ -13,6 +13,27 @@ import {
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [closedCategories, setClosedCategories] = useState<Set<string>>(() => new Set());
+  const stickyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = stickyRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--sticky-h", `${el.offsetHeight}px`);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const setCategoryOpen = (category: string, open: boolean) => {
+    setClosedCategories((prev) => {
+      const next = new Set(prev);
+      if (open) next.delete(category);
+      else next.add(category);
+      return next;
+    });
+  };
 
   const filteredFoods = useMemo(() => {
     return foods.filter((food) => 
@@ -36,6 +57,7 @@ const Index = () => {
   const scrollToCategory = (category: string) => {
     const element = document.getElementById(`category-${category}`);
     if (element) {
+      setCategoryOpen(category, true);
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
@@ -60,7 +82,7 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Search */}
+      <div ref={stickyRef} className="sticky top-0 z-20">
       <SearchHeader 
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -69,7 +91,7 @@ const Index = () => {
 
       {/* Category Navigation */}
       {hasResults && (
-        <div className="sticky top-[72px] z-20 bg-background/95 backdrop-blur-sm border-b border-border/50">
+        <div className="bg-background/95 backdrop-blur-sm border-b border-border/50">
           <div className="max-w-lg mx-auto px-4 py-2">
             <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
               {visibleCategories.map((category) => (
@@ -86,6 +108,7 @@ const Index = () => {
           </div>
         </div>
       )}
+      </div>
 
       {/* Food List */}
       <main className="max-w-lg mx-auto px-4 py-6">
@@ -96,6 +119,8 @@ const Index = () => {
               category={category}
               foods={groupedFoods[category]}
               id={`category-${category}`}
+              isOpen={!closedCategories.has(category)}
+              onOpenChange={(open) => setCategoryOpen(category, open)}
             />
           ))
         ) : (
@@ -131,6 +156,10 @@ const Index = () => {
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-satiety-low"></span>
               <span className="text-muted-foreground">Nízká</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-satiety-very-low"></span>
+              <span className="text-muted-foreground">Velmi nízká</span>
             </div>
           </div>
         </div>
