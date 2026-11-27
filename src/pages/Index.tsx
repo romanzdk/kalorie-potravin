@@ -177,7 +177,7 @@ const Index = () => {
                     <Database className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                     <div>
                       <p className="font-medium text-foreground">Zdroj dat</p>
-                      <p className="text-muted-foreground">Gemini 3, 12/2025</p>
+                      <p className="text-muted-foreground">Vygenerováno AI (Gemini 3, 12/2025), hodnoty jsou orientační</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

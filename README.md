@@ -1,50 +1,39 @@
-# Sytost na Dosah
+# Kalorie potravin
 
-Vytvoř moderní, "mobile-first" webovou aplikaci, která slouží jako "Průvodce energetickou hodnotou a sytostí potravin". Design musí být čistý, minimalistický a 100% responzivní, s hlavním důrazem na perfektní čitelnost na mobilním telefonu.
+**Průvodce sytostí potravin** — a mobile-first web app (in Czech) that shows calories per 100 g and how filling each common food is. It is built to help people pick food that keeps them full on fewer calories.
 
-### Hlavní požadavky na UI:
-1. **Jazyk:** Celé rozhraní aplikace (tlačítka, nadpisy, placeholder texty) musí být v **češtině**.
-2. **Rozložení:** Použij rozložení typu "Karty" (Card layout) pro seznam potravin. Nepoužívej široké tabulky, které se na mobilu špatně čtou.
-3. **Vizuální styl:** Hodně bílého místa (whitespace), velké čitelné písmo.
-4. **Barevné kódování:** Použij barvy pro indikaci "Úrovně sytosti" (např. Zelená pro "Vysoká/Velmi vysoká", Žlutá pro "Střední", Červená/Oranžová pro "Nízká").
+**Live app:** https://romanzdk.github.io/kalorie-potravin/
 
-### Funkcionalita:
-1. **Vyhledávání (Sticky Header):**
-   - Umísti velké vyhledávací pole fixně na horní část obrazovky (sticky), aby bylo vždy po ruce.
-   - **KRITICKY DŮLEŽITÉ:** Vyhledávání musí být **necitlivé na diakritiku (háčky/čárky) a velikost písmen**.
-   - Logika: Když uživatel napíše "rajce", musí to najít "Rajče". Když napíše "kure", najde to "Kuřecí".
+<img src="public/screenshot.png" alt="App screenshot on a phone" width="300">
 
-2. **Seznam potravin:**
-   - Seskup potraviny podle jejich kategorie (např. Zelenina, Ovoce, Maso...).
-   - Každá karta potraviny musí obsahovat:
-     - **Název:** Tučně a velkým písmem.
-     - **Kcal:** Výrazně zobrazeno (např. "52 kcal / 100g").
-     - **Štítek sytosti:** Barevný odznak s textem (např. "Vysoká").
-     - **Důvod sytosti:** Menším písmem pod tím (např. "Vláknina + Objem").
+## Features
 
-Data jsou přiložena v souboru `data.csv`.
+- ~90 common foods grouped by category (vegetables, fruit, meat, dairy, …)
+- calories per 100 g and a colour-coded satiety level (high / medium / low) with the reason (fibre, protein, volume)
+- search that ignores case and Czech diacritics (`rajce` finds *Rajče*, `kure` finds *Kuřecí*)
+- static site: no account, no backend, no cookies; visits are counted with cookieless [GoatCounter](https://www.goatcounter.com/) (remove the script in `index.html` if you fork it)
 
-Ujisti se, že aplikace vypadá profesionálně, kód je bez chyb a vše funguje plynule.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://kalorie-potravin.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/93a85364-9cc6-45f0-bd73-9ec3c6b72981).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+> Values are indicative and were generated with AI (Gemini 3, 12/2025). They have not been checked against an official food database.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requires Node.js 22+.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm ci
+npm run dev      # http://localhost:8080/kalorie-potravin/
+npm run lint
+npm run build    # static site in dist/
 ```
+
+The food data lives in [`src/data/foods.ts`](src/data/foods.ts).
+
+Built with React, TypeScript, Vite, Tailwind CSS and shadcn/ui. The first version was generated with [Lovable](https://lovable.dev).
+
+## Deployment
+
+Every push to `main` builds the app and deploys it to GitHub Pages ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)). Pull requests run lint, type check and build. In a fork, set **Settings → Pages → Source** to **GitHub Actions** first.
+
+## License
+
+[MIT](LICENSE)
