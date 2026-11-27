@@ -31,15 +31,15 @@
     --radius: 1rem;
 
     /* Satiety colors */
-    --satiety-very-high: 142 76% 36%;
+    --satiety-very-high: 142 76% 24%;
     --satiety-very-high-bg: 142 76% 95%;
-    --satiety-high: 142 60% 45%;
+    --satiety-high: 142 70% 25%;
     --satiety-high-bg: 142 60% 94%;
-    --satiety-medium: 38 92% 50%;
+    --satiety-medium: 32 90% 30%;
     --satiety-medium-bg: 38 92% 95%;
-    --satiety-low: 15 90% 55%;
+    --satiety-low: 15 80% 40%;
     --satiety-low-bg: 15 90% 96%;
-    --satiety-very-low: 0 84% 60%;
+    --satiety-very-low: 0 72% 42%;
     --satiety-very-low-bg: 0 84% 96%;
 
     --chart-1: 220 70% 50%;
