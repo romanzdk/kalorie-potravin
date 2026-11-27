@@ -42,7 +42,7 @@ export function FoodCard({ food, index }: FoodCardProps) {
           <div className={cn("flex items-center gap-1.5 rounded-lg px-3 py-1.5", getKcalColor(food.kcal))}>
             <Flame className={cn("h-4 w-4", getFlameColor(food.kcal))} />
             <span className="font-bold">{food.kcal}</span>
-            <span className="text-sm">kcal / 100g</span>
+            <span className="text-sm">kcal / 100 g</span>
           </div>
         </div>
 

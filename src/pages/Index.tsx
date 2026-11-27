@@ -98,7 +98,7 @@ const Index = () => {
                 <button
                   key={category}
                   onClick={() => scrollToCategory(category)}
-                  className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-muted/50 hover:bg-muted rounded-full whitespace-nowrap transition-colors"
+                  className="flex items-center gap-1 min-h-11 px-3 py-1.5 text-xs font-medium bg-muted/50 hover:bg-muted rounded-full whitespace-nowrap transition-colors"
                 >
                   <span>{categoryEmojis[category]}</span>
                   <span className="text-muted-foreground">{category}</span>
@@ -182,7 +182,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-satiety-low"></span>
-              <span className="text-muted-foreground">300+</span>
+              <span className="text-muted-foreground">301+</span>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ const Index = () => {
         {/* Footer */}
         <footer className="mt-4 pb-8 space-y-2 text-center text-xs text-muted-foreground">
           <p>
-            Hodnoty na 100 g/ml jsou orientační. Data vygenerovala AI (Gemini 3, 12/2025)
+            Hodnoty na 100 g jsou orientační. Data vygenerovala AI (Gemini 3, 12/2025)
             a nebyla ověřena v oficiální databázi potravin. Nenahrazují radu lékaře ani dietologa.
           </p>
           <p>
