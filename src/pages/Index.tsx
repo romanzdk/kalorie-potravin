@@ -236,7 +236,7 @@ const Index = () => {
             a nebyla ověřena v oficiální databázi potravin. Nenahrazují radu lékaře ani dietologa.
           </p>
           <p>
-            Web provozuje Roman Zydyk,{" "}
+            Web provozuje Roman Žydyk,{" "}
             <a href="mailto:romanzdk@gmail.com" className="text-primary underline">romanzdk@gmail.com</a>.
             {" "}Jen kvůli měření návštěvnosti používáme službu{" "}
             <a href="https://www.goatcounter.com/help/privacy" className="text-primary underline">GoatCounter</a>
