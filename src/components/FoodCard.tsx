@@ -34,7 +34,7 @@ export function FoodCard({ food, index }: FoodCardProps) {
           </h3>
           <div className="flex flex-col items-end gap-0.5">
             <SatietyBadge level={food.sytost} />
-            <span className="text-[10px] text-muted-foreground/60">sytost</span>
+            <span className="text-[10px] text-muted-foreground">sytost</span>
           </div>
         </div>
         
@@ -42,7 +42,7 @@ export function FoodCard({ food, index }: FoodCardProps) {
           <div className={cn("flex items-center gap-1.5 rounded-lg px-3 py-1.5", getKcalColor(food.kcal))}>
             <Flame className={cn("h-4 w-4", getFlameColor(food.kcal))} />
             <span className="font-bold">{food.kcal}</span>
-            <span className="text-sm opacity-80">kcal / 100g</span>
+            <span className="text-sm">kcal / 100g</span>
           </div>
         </div>
 
